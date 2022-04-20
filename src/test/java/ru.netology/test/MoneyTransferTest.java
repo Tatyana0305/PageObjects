@@ -34,6 +34,7 @@ public class MoneyTransferTest {
     @Test
     void shouldTransferMoneyBetweenOwnCardsOverBalance() {
         open("http://localhost:9999");
+        Configuration.holdBrowserOpen = true;
         var loginPage = new LoginPage();
 //    var loginPage = open("http://localhost:9999", LoginPageV2.class);
         var authInfo = DataHelper.getAuthInfo();
