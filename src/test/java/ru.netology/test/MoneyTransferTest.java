@@ -32,6 +32,7 @@ public class MoneyTransferTest {
         assertEquals((balanceFirstCardBefore + amount), balanceFirstCardAfter);
 
     }
+
     @Test
     void shouldTransferMoneyBetweenOwnCards() {
         open("http://localhost:9999");
@@ -53,6 +54,7 @@ public class MoneyTransferTest {
         assertEquals((balanceSecondCardBefore + amount), balanceSecondCardAfter);
 
     }
+
     @Test
     void shouldTransferMoneyBetweenOwnCardsOverLimit() {
         open("http://localhost:9999");
@@ -68,10 +70,7 @@ public class MoneyTransferTest {
         val transferPage = dashboardPage.transferFromFirstToSecondCard();
         int amount = 20000;
         transferPage.transferMoney(amount, DataHelper.getFirstCardNumber());
-        val balanceFirstCardAfter = dashboardPage.getFirstCardBalance();
-        val balanceSecondCardAfter = dashboardPage.getSecondCardBalance();
-        assertEquals((balanceFirstCardBefore - amount), balanceFirstCardAfter);
-        assertEquals((balanceSecondCardBefore + amount), balanceSecondCardAfter);
+        transferPage.failedTransfer();
 
     }
 
